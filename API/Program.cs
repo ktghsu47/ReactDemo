@@ -1,5 +1,5 @@
 using System;
-using Domain;
+//using Domain;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 //using Microsoft.AspNetCore.Identity;
@@ -19,6 +19,7 @@ namespace API {
                     var context = services.GetRequiredService<DataContext>();
                     //var userManager = services.GetRequiredService<UserManager<AppUser>>();
                     context.Database.Migrate();
+                    Seed.SeedData(context);
                     //Seed.SeedData(context, userManager).Wait();
                 } catch (Exception ex) {
                     var logger = services.GetRequiredService<ILogger<Program>>();
